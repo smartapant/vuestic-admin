@@ -14,34 +14,35 @@
           <label class="control-label" for="password">{{'auth.password' | translate}}</label><i class="bar"></i>
         </div>
       </div>
-      <div class="form-check abc-checkbox abc-checkbox-primary">
-        <input class="form-check-input" id="checkbox1" type="checkbox" checked>
-        <label class="form-check-label" for="checkbox1">
-          <span class="abc-label-text">{{'auth.agree' | translate}} <router-link to="">{{'auth.termsOfUse' | translate}}</router-link></span>
-        </label>
-      </div>
+      <vuestic-checkbox
+        :id="'checkbox1'"
+        v-model="checkboxOneModel">
+        <template slot="label">{{'auth.agree' | translate}}
+          <router-link to="">{{'auth.termsOfUse' | translate}}</router-link>
+        </template>
+      </vuestic-checkbox>
       <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between down-container">
         <button class="btn btn-primary" type="submit">
           {{'auth.signUp' | translate}}
         </button>
-        <router-link class='link' :to="{name: 'Login'}">{{'auth.alreadyJoined' | translate}}</router-link>
+        <router-link class='link' :to="{name: 'login'}">{{'auth.alreadyJoined' | translate}}</router-link>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'signup'
+export default {
+  name: 'signup',
+  data () {
+    return {
+      checkboxOneModel: true
+    }
   }
+}
 </script>
 
 <style lang="scss">
-  @import '../../../sass/variables';
-  @import '../../../../node_modules/bootstrap/scss/mixins/breakpoints';
-  @import "../../../../node_modules/bootstrap/scss/functions";
-  @import '../../../../node_modules/bootstrap/scss/variables';
-
   .signup {
     @include media-breakpoint-down(md) {
       width: 100%;

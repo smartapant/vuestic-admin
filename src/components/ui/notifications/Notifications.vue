@@ -51,7 +51,7 @@
                 the item.
               </p>
             </div>
-         </div>
+          </div>
         </vuestic-widget>
       </div>
     </div>
@@ -106,12 +106,10 @@
                 </div>
                 <div class="form-group toasts-position-group d-flex flex-row">
                   <toast-position-picker v-model="toastPosition" />
-                  <div class="form-check abc-checkbox abc-checkbox-primary">
-                    <input class="form-check-input" id="toast-fullwidth" v-model="isToastFullWidth" type="checkbox">
-                    <label class="form-check-label" for="toast-fullwidth">
-                      <span class="abc-label-text">{{'notificationsPage.toasts.fullWidthLabel' | translate}}</span>
-                    </label>
-                  </div>
+                  <vuestic-checkbox
+                    :label="'notificationsPage.toasts.fullWidthLabel' | translate"
+                    :id="'toast-fullwidth'"
+                    v-model="isToastFullWidth"/>
                 </div>
                 <button slot="trigger" class="btn btn-sm btn-primary" @click="launchToast">
                   {{'notificationsPage.toasts.launchToast' | translate}}
@@ -133,76 +131,71 @@
 </template>
 
 <script>
-  import ToastPositionPicker from './ToastPositionPicker.vue'
+import ToastPositionPicker from './ToastPositionPicker.vue'
 
-  export default {
-    name: 'notifications',
+export default {
+  name: 'notifications',
 
-    components: {ToastPositionPicker},
+  components: { ToastPositionPicker },
 
-    data () {
-      return {
-        popoverTitle: 'Hey!',
-        popoverText: 'This popover is amazing',
-        popoverIcon: 'fa-image',
-        isPopoverDisabled: false,
-        topTooltipOptions: {
-          content: 'Top tooltip text',
-          placement: 'top'
-        },
-        leftTooltipOptions: {
-          content: 'Left tooltip text',
-          placement: 'left'
-        },
-        rightTooltipOptions: {
-          content: 'Right tooltip text',
-          placement: 'right'
-        },
-        bottomTooltipOptions: {
-          content: 'Bottom tooltip text',
-          placement: 'bottom'
-        },
-        toastText: 'This toast is awesome!',
-        toastDuration: 2500,
-        toastIcon: 'fa-star-o',
-        toastPosition: 'bottom-right',
-        isToastFullWidth: false
-      }
-    },
-
-    computed: {
-      isToastContentPresent () {
-        return !!(this.toastText || this.toastIcon)
-      }
-    },
-
-    methods: {
-      checkPopoverContents () {
-        if (!(this.popoverTitle || this.popoverText || this.popoverIcon)) {
-          this.isPopoverDisabled = true
-        } else {
-          this.isPopoverDisabled = false
-        }
+  data () {
+    return {
+      popoverTitle: 'Hey!',
+      popoverText: 'This popover is amazing',
+      popoverIcon: 'fa-image',
+      isPopoverDisabled: false,
+      topTooltipOptions: {
+        content: 'Top tooltip text',
+        placement: 'top'
       },
+      leftTooltipOptions: {
+        content: 'Left tooltip text',
+        placement: 'left'
+      },
+      rightTooltipOptions: {
+        content: 'Right tooltip text',
+        placement: 'right'
+      },
+      bottomTooltipOptions: {
+        content: 'Bottom tooltip text',
+        placement: 'bottom'
+      },
+      toastText: 'This toast is awesome!',
+      toastDuration: 2500,
+      toastIcon: 'fa-star-o',
+      toastPosition: 'bottom-right',
+      isToastFullWidth: false
+    }
+  },
 
-      launchToast () {
-        this.showToast(this.toastText, {
-          icon: this.toastIcon,
-          position: this.toastPosition,
-          duration: this.toastDuration,
-          fullWidth: this.isToastFullWidth
-        })
+  computed: {
+    isToastContentPresent () {
+      return !!(this.toastText || this.toastIcon)
+    }
+  },
+
+  methods: {
+    checkPopoverContents () {
+      if (!(this.popoverTitle || this.popoverText || this.popoverIcon)) {
+        this.isPopoverDisabled = true
+      } else {
+        this.isPopoverDisabled = false
       }
+    },
+
+    launchToast () {
+      this.showToast(this.toastText, {
+        icon: this.toastIcon,
+        position: this.toastPosition,
+        duration: this.toastDuration,
+        fullWidth: this.isToastFullWidth
+      })
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-
-  .toast-position-picker {
-    margin-right: 2rem;
-  }
-
   .toasted-container.sample-toasted-container {
     position: static;
     transform: translateX(0);
@@ -212,5 +205,4 @@
       transform: translateY(0);
     }
   }
-
 </style>

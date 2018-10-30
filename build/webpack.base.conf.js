@@ -29,23 +29,25 @@ module.exports = {
       'components': resolve('src/components'),
       'services': resolve('src/services'),
       'directives': resolve('src/directives'),
-      'vuestic-mixins': resolve('src/vuestic-mixins'),
-      'vuestic-components': resolve('src/components/vuestic-components'),
+      'vuestic-mixins': resolve('src/vuestic-theme/vuestic-mixins'),
+      'vuestic-components': resolve('src/vuestic-theme/vuestic-components'),
+      'vuestic-directives': resolve('src/vuestic-theme/vuestic-directives'),
+      'vuestic-theme': resolve('src/vuestic-theme'),
       'data': resolve('src/data'),
       'vuex-store': resolve('src/store')
     }
   },
   module: {
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

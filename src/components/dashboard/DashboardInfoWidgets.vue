@@ -5,7 +5,7 @@
         <div class="info-widget-inner">
           <div class="stats">
             <div class="stats-number">
-              <i class="ion ion-arrow-up-c text-primary stats-icon"></i>
+              <i class="ion ion-md-arrow-up text-primary stats-icon"></i>
               59
             </div>
             <div class="stats-title">{{'dashboard.elements' | translate}}</div>
@@ -18,7 +18,7 @@
         <div class="info-widget-inner">
           <div class="stats">
             <div class="stats-number">
-              <i class="ion ion-arrow-down-c text-danger stats-icon"></i>
+              <i class="ion ion-md-arrow-down text-danger stats-icon"></i>
               12
             </div>
             <div class="stats-title">{{'dashboard.versions' | translate}}</div>
@@ -37,8 +37,7 @@
               <div class="stats-title">Commits</div>
             </div>
             <div class="chart-container">
-              <vuestic-progress-bar type="circle" ref="circleProgress" :colorName="'white'" :backgroundColorName="'danger'"
-                            :startColorName="'danger'"></vuestic-progress-bar>
+              <vuestic-progress-bar type="circle" :value="70" theme="White" backgroundTheme="Danger"/>
             </div>
           </div>
         </div>
@@ -49,7 +48,7 @@
         <div class="info-widget-inner">
           <div class="stats">
             <div class="stats-number">
-              <i class="ion ion-android-people stats-icon icon-wide"></i>
+              <i class="ion ion-md-people stats-icon icon-wide"></i>
               5
             </div>
             <div class="stats-title">{{'dashboard.teamMembers' | translate}}</div>
@@ -61,18 +60,12 @@
 </template>
 
 <script>
-  export default {
-    name: 'dashboard-info-widgets',
-
-    mounted () {
-      this.$refs.circleProgress.$data.value = 70
-    }
-  }
+export default {
+  name: 'dashboard-info-widgets'
+}
 </script>
 
 <style lang="scss" scoped>
-  @import "../../sass/_variables.scss";
-
   .stats-number, .stats-title {
     line-height: 1;
   }

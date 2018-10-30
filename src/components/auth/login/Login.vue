@@ -18,23 +18,19 @@
         <button class="btn btn-primary" type="submit">
           {{'auth.login' | translate}}
         </button>
-        <router-link class='link' :to="{name: 'Signup'}">{{'auth.createAccount' | translate}}</router-link>
+        <router-link class='link' :to="{name: 'signup'}">{{'auth.createAccount' | translate}}</router-link>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'login'
-  }
+export default {
+  name: 'login'
+}
 </script>
 
 <style lang="scss">
-  @import '../../../sass/variables';
-  @import '../../../../node_modules/bootstrap/scss/mixins/breakpoints';
-  @import "../../../../node_modules/bootstrap/scss/functions";
-  @import '../../../../node_modules/bootstrap/scss/variables';
   .login {
     @include media-breakpoint-down(md) {
       width: 100%;

@@ -1,26 +1,26 @@
 import store from 'vuex-store'
 
 export default {
-  inserted: function (el) {
-    let getWindowMatch = () => {
+  inserted (el) {
+    const checkIsDesktop = () => {
       return window.matchMedia(store.getters.config.windowMatchSizeLg).matches
     }
 
-    let prevMatchlg = getWindowMatch()
+    let prevMatchlg = checkIsDesktop()
+    let sidebar = el.querySelector('.vuestic-sidebar')
 
     el.addEventListener('transitionend', function () {
       store.dispatch('isToggleWithoutAnimation', false)
     })
 
     window.addEventListener('resize', function () {
-      if (getWindowMatch() && !prevMatchlg) {
-        store.dispatch('toggleSidebar', true)
-      } else if (!getWindowMatch() && prevMatchlg) {
+      if (checkIsDesktop() && !prevMatchlg) {
+        sidebar.classList.remove('sidebar-hidden')
+      } else if (!checkIsDesktop() && prevMatchlg) {
         store.dispatch('isToggleWithoutAnimation', true)
-        store.dispatch('toggleSidebar', false)
+        sidebar.classList.add('sidebar-hidden')
       }
-      prevMatchlg = getWindowMatch()
+      prevMatchlg = checkIsDesktop()
     })
-  }
+  },
 }
-

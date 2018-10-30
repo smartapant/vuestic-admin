@@ -26,7 +26,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    // https://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
@@ -93,6 +93,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
+      }
+    ]),
+    // copy favicon
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../favicon.ico'),
+        to: config.build.assetsRoot
       }
     ])
   ]
